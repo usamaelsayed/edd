@@ -1,9 +1,23 @@
 flatpickr("#date-form", {});
-
+const months = [
+  "يناير",
+  "فبراير",
+  "مارس",
+  "أبريل",
+  "مايو",
+  "يونيه",
+  "يوليو",
+  "اغسطس",
+  "سبتمبر",
+  "اكتوبر",
+  "نوفمبر",
+  "ديسمبر",
+];
 const collectedDate = document.getElementById("date-form");
 const btn = document.querySelector(".form-btn");
 const formEdd = document.getElementById("edd-form");
 const err = "برجاء ادخال تاريخ صحيح";
+const congrates = "تهانينا - الموعد المتوقع للوضع";
 
 formEdd.addEventListener("submit", (e) => {
   let d = new Date(collectedDate.value);
@@ -18,10 +32,15 @@ formEdd.addEventListener("submit", (e) => {
   let resultDay = delivery.getDate();
 
   if (collectedDate.value.length === 0 || Math.floor(now - gestMonth) > 9) {
-    document.querySelector(".results-field").value = err;
+    // document.querySelector(".results-field").value = err;
+    document.getElementById("para-results").innerText = err;
   } else {
-    let results = ` يوم ${resultDay} شهر ${resultMonth} سنة ${resultYear}`;
-    document.querySelector(".results-field").value = results;
+    document.getElementById("congrats").innerText = congrates;
+    let results = ` يوم ${resultDay} شهر ${
+      months[resultMonth - 1]
+    } سنة ${resultYear}`;
+    document.getElementById("para-results").innerText = results;
+    // document.querySelector(".results-field").value = results;
   }
   e.preventDefault();
 });
