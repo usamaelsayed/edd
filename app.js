@@ -18,7 +18,7 @@ formEdd.addEventListener("submit", (e) => {
   if (collectedDate.value.length === 0) {
     document.querySelector(".results-field").value = err;
   } else {
-    let results = `موعد الوضع المحتمل يوم ${resultDay} شهر ${resultMonth} سنة ${resultYear}`;
+    let results = ` يوم ${resultDay} شهر ${resultMonth} سنة ${resultYear}`;
     document.querySelector(".results-field").value = results;
   }
   e.preventDefault();
